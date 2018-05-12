@@ -16,6 +16,10 @@ public class MoveBehaviour : GenericBehaviour
 	private int groundedBool;                       // Animator variable related to whether or not the player is on ground.
 	private bool jump;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
+    private bool isSlapping;
+    private bool isCalling;
+    private int beingSlapped;
+    private bool isDrinking;
 
 	// Start is always called after any Awake functions.
 	void Start() 
@@ -39,7 +43,44 @@ public class MoveBehaviour : GenericBehaviour
 		{
 			jump = true;
 		}
-	}
+
+        //SetConditions for trigger events
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            int randomGeneration = Random.Range(0,100);
+            Debug.Log(randomGeneration);
+            if(randomGeneration <= 50)
+            {
+                beingSlapped = 1;
+            }
+            else
+            {
+                beingSlapped = 2;
+            }
+        }
+
+        if (beingSlapped == 1)
+        {
+            Debug.Log("SoftSlap");
+            behaviourManager.GetAnim.SetTrigger("SoftSlap");
+            beingSlapped = 0;
+        }
+
+        if (beingSlapped == 2)
+        {
+            Debug.Log("HardSlap");
+            behaviourManager.GetAnim.SetTrigger("HardSlap");
+            beingSlapped = 0;
+        }
+
+        if (isSlapping)
+        {
+            Debug.Log("CharacterSlap");
+            this.gameObject.GetComponent<Animator>().SetTrigger("Slap");
+            isSlapping = false;
+        }
+
+    }
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
