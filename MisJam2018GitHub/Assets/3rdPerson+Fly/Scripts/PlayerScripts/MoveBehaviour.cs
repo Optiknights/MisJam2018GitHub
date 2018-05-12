@@ -47,16 +47,39 @@ public class MoveBehaviour : GenericBehaviour
         //SetConditions for trigger events
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            isDrinking = true;
+            int randomGeneration = Random.Range(0,100);
+            if(randomGeneration < 50)
+            {
+                beingSlapped = 1;
+            }
+            else
+            {
+                beingSlapped = 2;
+            }
         }
 
-        if (isDrinking)
+        if (beingSlapped == 1)
         {
-            Debug.Log("isDrinking");
-            behaviourManager.GetAnim.SetTrigger("HardSlap");
-            isDrinking = false;
+            Debug.Log("SoftSlap");
+            behaviourManager.GetAnim.SetTrigger("SoftSlap");
+            beingSlapped = 0;
         }
-	}
+
+        if (beingSlapped == 2)
+        {
+            Debug.Log("HardSlap");
+            behaviourManager.GetAnim.SetTrigger("HardSlap");
+            beingSlapped = 0;
+        }
+
+        if (isSlapping)
+        {
+            Debug.Log("CharacterSlap");
+            this.gameObject.GetComponent<Animator>().SetTrigger("Slap");
+            isSlapping = false;
+        }
+
+    }
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
