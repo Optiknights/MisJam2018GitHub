@@ -48,7 +48,8 @@ public class MoveBehaviour : GenericBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             int randomGeneration = Random.Range(0,100);
-            if(randomGeneration < 50)
+            Debug.Log(randomGeneration);
+            if(randomGeneration <= 50)
             {
                 beingSlapped = 1;
             }
