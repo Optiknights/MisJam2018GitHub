@@ -9,8 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 161194537570b424988494b649367ed3, type: 3}
-  m_Name: FuckOff
+  m_Name: Tina2
   m_EditorClassIdentifier: 
   Speech:
-  - 'To Will: Fuck off'
-  StateOfGameAfterDialogue: 0
+  - 'Tina: You got me my food! Maybe you aren''t a creep after all ...'
+  - 'Will: 1) Me love you long time. \n 2)  Do you also like it spicy in bed? \n 3)
+    I hear MSG is an aphrodisiac. Shall I come in?'
+  StateOfGameAfterDialogue: 14

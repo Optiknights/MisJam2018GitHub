@@ -27,17 +27,10 @@ public class StoryManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		/* 
-		 Debug.Log ("Starting up story manager.");
-		AbsoluteGameState = GameState.TalkingToFred;
-		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, OpeningDialogue, AbsoluteGameState);
-		*/
+
 		AbsoluteGameState = GameState.HeadingToFred;
 	}
 
-	/*public void Example(){
-		StartTalk (1, null);
-	}*/
 
 	//To be accessed by game for trigger
 

@@ -9,8 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 161194537570b424988494b649367ed3, type: 3}
-  m_Name: FuckOff
+  m_Name: Tina1
   m_EditorClassIdentifier: 
   Speech:
-  - 'To Will: Fuck off'
-  StateOfGameAfterDialogue: 0
+  - 'Will: Hey, why do you look so sad?'
+  - "Tina: I twisted my ankle and can\u2019t pick up the chinese food I ordered."
+  - "Will: 1) I can totally go get that for you\u2026 for a price. ;) \\n 2) I could
+    carry you there. Or even to my place."
+  StateOfGameAfterDialogue: 10
