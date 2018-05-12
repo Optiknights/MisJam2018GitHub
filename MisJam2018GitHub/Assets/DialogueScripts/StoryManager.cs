@@ -12,6 +12,7 @@ public class StoryManager : MonoBehaviour {
 	DialogueExecuter dialogueExecuter;
 
 	public Dialogue OpeningDialogue;
+	public Dialogue FirstWomanDialogue;
 
 
 	// Use this for initialization
@@ -27,6 +28,11 @@ public class StoryManager : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.A)) {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
+		}
+
+		if (AbsoluteGameState == GameState.HeadingToFirstWoman && Input.GetKeyUp (KeyCode.B)) {
+			AbsoluteGameState = GameState.TalkingToFirstWoman;
+			dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, FirstWomanDialogue, AbsoluteGameState);
 		}
 		
 	}
