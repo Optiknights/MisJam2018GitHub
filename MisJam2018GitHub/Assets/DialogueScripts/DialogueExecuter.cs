@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Runs through the dialogue, executing it one line at a time.
+ *
+ */
 
 public class DialogueExecuter {
 
