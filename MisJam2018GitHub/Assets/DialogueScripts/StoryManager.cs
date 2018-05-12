@@ -21,25 +21,63 @@ public class StoryManager : MonoBehaviour {
 
 	public Dialogue OpeningDialogue;
 	public Dialogue FirstWomanDialogue;
+	public Dialogue FirstWomanDialogue2;
+	public Dialogue FuckOff;
 
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Starting up story manager.");
+		/* 
+		 Debug.Log ("Starting up story manager.");
 		AbsoluteGameState = GameState.TalkingToFred;
 		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, OpeningDialogue, AbsoluteGameState);
+		*/
+		AbsoluteGameState = GameState.HeadingToFred;
 	}
-	
+
+	/*public void Example(){
+		StartTalk (1, null);
+	}*/
+
+	//To be accessed by game for trigger
+
+	public void StartTalk(int charID, GameObject NPCObj)
+	{
+		Dialogue foundDialogue = FuckOff;
+
+		switch (charID) {
+		case 1:
+			if (AbsoluteGameState == GameState.HeadingToFred) {
+				AbsoluteGameState = GameState.TalkingToFred;
+				foundDialogue = OpeningDialogue;
+			} else {
+				foundDialogue = FuckOff;
+			}
+			break;
+		default:
+			foundDialogue = FuckOff;
+			break;
+
+		}
+
+		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState, NPCObj);
+
+		AbsoluteGameState = dialogueExecuter.Step ();
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 
-		// Currently using input key 'A' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
 
-		if (Input.GetKeyUp (KeyCode.A)) {
+		// Currently using input key 'x' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
+
+		if (Input.GetKeyUp (KeyCode.X)) {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
 		}
 
+		/*
 		// Input key 'B' triggers the start of the conversation with the First Woman. This is to be replaced by proximity trigger
 		// or proximity + button press. 
 
@@ -47,6 +85,20 @@ public class StoryManager : MonoBehaviour {
 			AbsoluteGameState = GameState.TalkingToFirstWoman;
 			dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, FirstWomanDialogue, AbsoluteGameState);
 		}
+
+		// Input 'P' gives you a pizza slice. A second 'P' then triggers second dialogue with the woman.
+
+		if (AbsoluteGameState == GameState.HeadingToBuyPizza && Input.GetKeyUp (KeyCode.P)) {
+			AbsoluteGameState = GameState.ObtainedPizza;
+		}
+
+		if (AbsoluteGameState == GameState.ObtainedPizza && Input.GetKeyUp (KeyCode.P)) {
+			AbsoluteGameState = GameState.TalkingToFirstWomanWithPizza;
+			dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, FirstWomanDialogue2, AbsoluteGameState);
+
+		}
+		*/
+
 		
 	}
 
