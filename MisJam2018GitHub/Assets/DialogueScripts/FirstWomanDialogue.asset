@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161194537570b424988494b649367ed3, type: 3}
+  m_Name: FirstWomanDialogue
+  m_EditorClassIdentifier: 
+  Speech:
+  - 'Will: Hey cutie. What are you up to today. '
+  - 'Lisa: Ughh, are guys like you ever not hitting on women? '
+  - "Will: Oh c\u2019mon. Let me fulfil your deepest desire. "
+  - "Lisa: I would never in a million years \u2026 although, I am super hungry. Why
+    don\u2019t you bring me a pizza slice? We can talk then. "
+  - 'Will: 1) Anything for a sexy slice like you. \n 2) Girl, all that pizza will
+    only make you fat.'
+  StateOfGameAfterDialogue: 3
