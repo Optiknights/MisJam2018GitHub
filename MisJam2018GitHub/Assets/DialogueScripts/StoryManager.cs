@@ -72,7 +72,7 @@ public class StoryManager : MonoBehaviour {
 
 		// Currently using input key 'x' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
 
-		if (Input.GetKeyUp (KeyCode.X)) {
+		if (Input.GetKeyUp (KeyCode.C)) {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
 		}

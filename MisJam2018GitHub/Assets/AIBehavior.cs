@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AIBehavior : MonoBehaviour {
 
-
+    public StoryManager storyManager;
     public bool isSlapping;
     public int characterID;
     public bool dialogueCurrent;
 	// Use this for initialization
 	void Start () {
-		
+        dialogueCurrent = true;
 	}
 	
 	// Update is called once per frame
@@ -47,9 +47,10 @@ public class AIBehavior : MonoBehaviour {
         GameObject AIChar = AITrigger.gameObject;
         if (Input.GetKeyDown(KeyCode.X) && dialogueCurrent)
         {
+            Debug.Log("TriggeredX");
             dialogueCurrent = false;
             StartCoroutine(WaitForDialogue());
-            //gamestate.StartTalk(characterID, AIChar);
+            storyManager.StartTalk(characterID, AIChar);
         }
     }
 
