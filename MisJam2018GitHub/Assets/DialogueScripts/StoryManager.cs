@@ -22,6 +22,7 @@ public class StoryManager : MonoBehaviour {
 	public Dialogue OpeningDialogue;
 	public Dialogue FirstWomanDialogue;
 	public Dialogue FirstWomanDialogue2;
+	public Dialogue FuckOff;
 
 
 	// Use this for initialization
@@ -42,17 +43,19 @@ public class StoryManager : MonoBehaviour {
 
 	public void StartTalk(int charID, GameObject NPCObj)
 	{
-		Dialogue foundDialogue = FirstWomanDialogue2;
+		Dialogue foundDialogue = FuckOff;
 
 		switch (charID) {
 		case 1:
 			if (AbsoluteGameState == GameState.HeadingToFred) {
 				AbsoluteGameState = GameState.TalkingToFred;
 				foundDialogue = OpeningDialogue;
+			} else {
+				foundDialogue = FuckOff;
 			}
 			break;
 		default:
-			foundDialogue = FirstWomanDialogue;
+			foundDialogue = FuckOff;
 			break;
 
 		}
