@@ -6,6 +6,8 @@ public class AIBehavior : MonoBehaviour {
 
 
     public bool isSlapping;
+    public int characterID;
+    public bool dialogueCurrent;
 	// Use this for initialization
 	void Start () {
 		
@@ -38,5 +40,22 @@ public class AIBehavior : MonoBehaviour {
             aiAnim.SetTrigger("Slap");
             isSlapping = false;
         }
+    }
+
+    void OnTriggerStay(Collider AITrigger)
+    {
+        GameObject AIChar = AITrigger.gameObject;
+        if (Input.GetKeyDown(KeyCode.X) && dialogueCurrent)
+        {
+            dialogueCurrent = false;
+            StartCoroutine(WaitForDialogue());
+            //gamestate.StartTalk(characterID, AIChar);
+        }
+    }
+
+    IEnumerator WaitForDialogue()
+    {
+        yield return new WaitForSeconds(5);
+        dialogueCurrent = true;
     }
 }
