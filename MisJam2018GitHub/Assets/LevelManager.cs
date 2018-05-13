@@ -1,0 +1,23 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
+public class LevelManager : MonoBehaviour
+{
+
+    public void LoadLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
+    public void Options()
+    {
+        Camera.main.GetComponent<Animator>().SetTrigger("gotoOptions");
+    }
+
+    public void QuitRequest()
+    {
+        Application.Quit();
+    }
+
+}
