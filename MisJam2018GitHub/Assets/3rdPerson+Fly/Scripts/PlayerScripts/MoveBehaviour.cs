@@ -45,6 +45,7 @@ public class MoveBehaviour : GenericBehaviour
 		}
 
         //SetConditions for trigger events
+        /*
         if(Input.GetKeyDown(KeyCode.Q))
         {
             int randomGeneration = Random.Range(0,100);
@@ -58,6 +59,7 @@ public class MoveBehaviour : GenericBehaviour
                 beingSlapped = 2;
             }
         }
+        */
 
         if (beingSlapped == 1)
         {
