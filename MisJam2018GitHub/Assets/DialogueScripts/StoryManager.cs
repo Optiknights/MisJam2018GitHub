@@ -15,8 +15,9 @@ public class StoryManager : MonoBehaviour {
 
 	public GameObject TextPanel;
 	public Text Dialoguetextbox;
+	public GameState AbsoluteGameState;
+
 	bool DialogueMode;
-	GameState AbsoluteGameState;
 	DialogueExecuter dialogueExecuter;
 
 	public Dialogue OpeningDialogue;
@@ -36,21 +37,18 @@ public class StoryManager : MonoBehaviour {
 
 	public void StartTalk(int charID, GameObject NPCObj)
 	{
-		Dialogue foundDialogue = FuckOff;
+		Dialogue foundDialogue = FuckOff; //Default option if nothing else matches.
 
 		switch (charID) {
 		case 1:
 			if (AbsoluteGameState == GameState.HeadingToFred) {
 				AbsoluteGameState = GameState.TalkingToFred;
 				foundDialogue = OpeningDialogue;
-			} else {
-				foundDialogue = FuckOff;
 			}
 			break;
 		default:
 			foundDialogue = FuckOff;
 			break;
-
 		}
 
 		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState, NPCObj);
@@ -63,12 +61,31 @@ public class StoryManager : MonoBehaviour {
 	void Update () {
 
 
-		// Currently using input key 'x' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
+		if (Input.GetKeyUp (KeyCode.Alpha1) || Input.GetKeyUp (KeyCode.Keypad1)) {
+			CheckSlapList (1);
+			AbsoluteGameState = dialogueExecuter.Step ();
+			Debug.Log (AbsoluteGameState);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Alpha2) || Input.GetKeyUp (KeyCode.Keypad2)) {
+			CheckSlapList (2);
+			AbsoluteGameState = dialogueExecuter.Step ();
+			Debug.Log (AbsoluteGameState);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Alpha3) || Input.GetKeyUp (KeyCode.Keypad3)) {
+			CheckSlapList (3);
+			AbsoluteGameState = dialogueExecuter.Step ();
+			Debug.Log (AbsoluteGameState);
+		}
+
+		// Currently using input key 'c' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
 
 		if (Input.GetKeyUp (KeyCode.C)) {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
 		}
+
 
 		/*
 		// Input key 'B' triggers the start of the conversation with the First Woman. This is to be replaced by proximity trigger
@@ -94,5 +111,71 @@ public class StoryManager : MonoBehaviour {
 
 		
 	}
+
+	void SetSoftSlap()
+	{
+		dialogueExecuter.SetSlap ("SoftSlap");
+	}
+
+	void SetHardSlap()
+	{
+		dialogueExecuter.SetSlap ("HardSlap");
+	}
+
+	void SetNoSlap()
+	{
+		dialogueExecuter.SetSlap ("NoSlap"); //not currently an existing animation trigger.
+	}
+
+	void CheckSlapList(int num){
+		
+		switch (AbsoluteGameState) {
+
+			case GameState.TalkingToFred:
+				SetNoSlap ();
+				break;
+				
+			case GameState.TalkingToFirstWoman:
+				if (num == 1) {
+					SetSoftSlap ();
+				} else {
+					SetHardSlap ();
+				}
+				break;
+
+			case GameState.TalkingToFirstWomanWithPizza:
+				if (num == 1) {
+					SetSoftSlap ();
+				} else {
+					SetHardSlap ();
+				}
+				break;
+
+			case GameState.TalkingToSecondWoman:
+				if (num == 1) {
+					SetSoftSlap ();
+				} else {
+					SetHardSlap ();
+				}
+				break;
+
+			case GameState.TalkingToSecondWomanWithChinese:
+					SetHardSlap ();
+				break;
+
+			case GameState.TalkingToProstitute:
+				SetNoSlap ();
+				break;
+
+			case GameState.TalkingToProstituteWithCash:
+				SetHardSlap ();
+				break;
+
+		default:
+			SetNoSlap ();
+				break;
+		}
+	}
+
 
 }

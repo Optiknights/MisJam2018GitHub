@@ -17,6 +17,8 @@ public class DialogueExecuter {
 	GameObject textPanel;
 	GameObject NPCObj;
 
+	string slapQuality;
+
 	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState, GameObject NPCobject)
 	{
 		Debug.Log ("Spinning up DialogueExecuter.");
@@ -28,7 +30,7 @@ public class DialogueExecuter {
 		index = 0;
 		gameState = inGameState;
 		NPCObj = NPCobject;
-		Step ();
+		slapQuality = "NoSlap";
 	}
 
 	public GameState Step()
@@ -46,12 +48,20 @@ public class DialogueExecuter {
 		if (index == (dialogue.Speech.Count)) {
 			gameState = dialogue.StateOfGameAfterDialogue;
 			textPanel.SetActive (false);
-			Animator npcanimator = NPCObj.GetComponent<Animator> ();
-			npcanimator.SetTrigger ("HardSlap");
+			if (slapQuality != "NoSlap") {
+				Animator npcanimator = NPCObj.GetComponent<Animator> ();
+				npcanimator.SetTrigger (slapQuality);
+			}
 		}
 
 		index++;
 			
 		return gameState;
 	}
+
+	public void SetSlap(string inSlap)
+	{
+		slapQuality = inSlap;
+	}
+
 }
