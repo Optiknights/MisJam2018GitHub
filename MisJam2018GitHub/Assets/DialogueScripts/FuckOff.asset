@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: FuckOff
   m_EditorClassIdentifier: 
   Speech:
-  - Fuck off, Will!
-  StateOfGameAfterDialogue: 0
+  - 'To Will: Fuck off'
+  StateOfGameAfterDialogue: 22

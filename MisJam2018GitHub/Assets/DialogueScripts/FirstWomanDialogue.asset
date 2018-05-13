@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: FirstWomanDialogue
   m_EditorClassIdentifier: 
   Speech:
-  - 'Will: Hey cutie. What are you up to today. '
-  - 'Lisa: Ughh, are guys like you ever not hitting on women? '
+  - 'Will: Hey cutie. What are you up to?'
+  - 'Lisa: Ughh, I see the perverts are out today.'
   - "Will: Oh c\u2019mon. Let me fulfil your deepest desire. "
   - "Lisa: I would never in a million years \u2026 although, I am super hungry. Why
     don\u2019t you bring me a pizza slice? We can talk then. "
   - 'Will: 1) Anything for a sexy slice like you. \n 2) Girl, all that pizza will
     only make you fat.'
-  StateOfGameAfterDialogue: 3
+  StateOfGameAfterDialogue: 4
