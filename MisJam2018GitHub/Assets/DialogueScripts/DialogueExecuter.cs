@@ -81,9 +81,11 @@ public class DialogueExecuter {
 				Animator npcanimator = NPCObj.GetComponent<Animator> ();
 				npcanimator.SetTrigger (slapQuality);
 
+                Debug.Log(StoryManager.AbsoluteGameState);
 				//StartCoroutine (hitter ());
-                if(StoryManager.AbsoluteGameState == GameState.KnockedOut)
+                if(StoryManager.AbsoluteGameState == GameState.TalkingToProstituteWithCash)
                 {
+                    Debug.Log("settoTrue");
                     PoliceAppear.FinalHardSlap = true;
                 }
 				
