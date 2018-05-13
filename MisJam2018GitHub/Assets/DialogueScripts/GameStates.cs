@@ -20,7 +20,8 @@
         TalkingToProstituteWithCash,
         KnockedOut,
         PoliceStation,
-        FinalDate
+        FinalDate,
+		NoChange,
 
 
 }

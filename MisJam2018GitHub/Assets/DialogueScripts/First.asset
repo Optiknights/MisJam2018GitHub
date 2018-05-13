@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Name: First
   m_EditorClassIdentifier: 
   Speech:
-  - 'Fred: Hey Will, how is it going?'
+  - 'Fred: Hey Will. How''s it going, man?'
   - 'Will: Good, good. What''s on your mind, Fred?'
-  - 'Fred: Riddle me this. What''s your favourite thing about sex?'
+  - 'Fred: This crazy chick I slept with. What''s your favourite thing about sex?'
   - 'Will: 1) Feeling her hair on my back. \n 2) How wet it is. \n 3) The tentacles.'
-  - 'Fred: Ah, so you haven''t had sex yet.'
-  - 'Will: Yeah, you got me. But imma fix that today.'
-  StateOfGameAfterDialogue: 1
+  - 'Fred: What in the world are you talking about?'
+  - "Will: To be honest, I have no idea. I\u2019ve never been with a women\u2026 or
+    man before."
+  - 'Fred: Man, you just need to give it a shot, plenty of fish in the sea.'
+  - "Will: I guess you\u2019re right. They can\u2019t all reject me."
+  StateOfGameAfterDialogue: 2
