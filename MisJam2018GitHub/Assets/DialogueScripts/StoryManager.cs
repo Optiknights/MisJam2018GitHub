@@ -50,8 +50,8 @@ public class StoryManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//AbsoluteGameState = GameState.HeadingToFred;
-		AbsoluteGameState = GameState.ObtainedCash;
+		AbsoluteGameState = GameState.HeadingToFred;
+		//AbsoluteGameState = GameState.ObtainedCash;
 	}
 
 
