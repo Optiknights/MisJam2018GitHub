@@ -38,8 +38,14 @@ public class StoryManager : MonoBehaviour {
 
 
 	//To be accessed by game for trigger
+    public void WorldEvent(int worldTriggerID)
+    {
 
-	public void StartTalk(int charID, GameObject NPCObj)
+    }
+
+
+
+    public void StartTalk(int charID, GameObject NPCObj)
 	{
 		Dialogue foundDialogue = FuckOff; //Default option if nothing else matches.
 
