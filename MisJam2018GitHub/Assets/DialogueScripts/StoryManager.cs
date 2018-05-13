@@ -23,6 +23,10 @@ public class StoryManager : MonoBehaviour {
 	public Dialogue OpeningDialogue;
 	public Dialogue FirstWomanDialogue;
 	public Dialogue FirstWomanDialogue2;
+	public Dialogue SecondWomanDialogue;
+	public Dialogue SecondWomanDialogue2;
+	public Dialogue ProstituteDialogue;
+	public Dialogue ProstituteDialogue2;
 	public Dialogue FuckOff;
 
 
@@ -46,6 +50,40 @@ public class StoryManager : MonoBehaviour {
 				foundDialogue = OpeningDialogue;
 			}
 			break;
+
+		case 2:
+			if (AbsoluteGameState == GameState.HeadingToFirstWoman) {
+				AbsoluteGameState = GameState.TalkingToFirstWoman;
+				foundDialogue = FirstWomanDialogue;
+			}
+			if (AbsoluteGameState == GameState.ObtainedPizza) {
+				AbsoluteGameState = GameState.TalkingToFirstWomanWithPizza;
+				foundDialogue = FirstWomanDialogue2;
+			}
+			break;
+
+		case 3:
+			if (AbsoluteGameState == GameState.HeadingToSecondWoman) {
+				AbsoluteGameState = GameState.TalkingToSecondWoman;
+				foundDialogue = SecondWomanDialogue;
+			}
+			if (AbsoluteGameState == GameState.ObtainedChinese) {
+				AbsoluteGameState = GameState.TalkingToSecondWomanWithChinese;
+				foundDialogue = SecondWomanDialogue2;
+			}
+			break;
+
+		case 4:
+			if (AbsoluteGameState == GameState.HeadingToProstitute) {
+				AbsoluteGameState = GameState.TalkingToProstitute;
+				foundDialogue = ProstituteDialogue;
+			}
+			if (AbsoluteGameState == GameState.ObtainedCash) {
+				AbsoluteGameState = GameState.TalkingToProstituteWithCash;
+				foundDialogue = ProstituteDialogue2;
+			}
+			break;
+
 		default:
 			foundDialogue = FuckOff;
 			break;
@@ -81,13 +119,13 @@ public class StoryManager : MonoBehaviour {
 
 		// Currently using input key 'c' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
 
-		if (Input.GetKeyUp (KeyCode.C)) {
+		/* if (Input.GetKeyUp (KeyCode.C)) {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
 		}
 
 
-		/*
+		
 		// Input key 'B' triggers the start of the conversation with the First Woman. This is to be replaced by proximity trigger
 		// or proximity + button press. 
 
