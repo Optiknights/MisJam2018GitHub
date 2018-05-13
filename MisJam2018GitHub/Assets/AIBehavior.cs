@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AIBehavior : MonoBehaviour {
 
-
+    public StoryManager storyManager;
     public bool isSlapping;
+    public int characterID;
+    public bool dialogueCurrent;
 	// Use this for initialization
 	void Start () {
-		
+        dialogueCurrent = true;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +32,12 @@ public class AIBehavior : MonoBehaviour {
     }
 
     public void AISlap()
-    {
+	{
+		Debug.Log ("Trying to start slap animation.");
+		if (this.gameObject == null){
+			
+			Debug.Log ("Game Object null :( ");
+		}
         Animator aiAnim = this.gameObject.GetComponent<Animator>();
         if (isSlapping)
         {
@@ -38,5 +45,23 @@ public class AIBehavior : MonoBehaviour {
             aiAnim.SetTrigger("Slap");
             isSlapping = false;
         }
+    }
+
+    void OnTriggerStay(Collider AITrigger)
+    {
+        GameObject AIChar = AITrigger.gameObject;
+		if (Input.GetKeyDown(KeyCode.E) && dialogueCurrent)
+        {
+            Debug.Log("TriggeredX");
+            dialogueCurrent = false;
+            StartCoroutine(WaitForDialogue());
+            storyManager.StartTalk(characterID, AIChar);
+        }
+    }
+
+    IEnumerator WaitForDialogue()
+    {
+        yield return new WaitForSeconds(5);
+        dialogueCurrent = true;
     }
 }

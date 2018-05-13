@@ -15,8 +15,12 @@ public class DialogueExecuter {
 	int index;
 	GameState gameState;
 	GameObject textPanel;
+	GameObject NPCObj;
+	GameObject NPC;
 
-	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState)
+	string slapQuality;
+
+	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState, GameObject NPCobject, GameObject inNPC)
 	{
 		Debug.Log ("Spinning up DialogueExecuter.");
 		textPanel = inTextPanel;
@@ -26,10 +30,25 @@ public class DialogueExecuter {
 		dialogue = inDialogue;
 		index = 0;
 		gameState = inGameState;
-		Step ();
+		NPCObj = NPCobject;
+		NPC = inNPC;
+		slapQuality = "NoSlap";
 	}
 
-	public GameState Step()
+    public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState)
+    {
+        Debug.Log("Spinning up DialogueExecuter.");
+        textPanel = inTextPanel;
+        textPanel.SetActive(true);
+        dialogueTextBox.text = "*Looking around*";
+        dialogueTextUI = dialogueTextBox;
+        dialogue = inDialogue;
+        index = 0;
+        gameState = inGameState;
+        slapQuality = "NoSlap";
+    }
+
+    public GameState Step()
 	{
 		Debug.Log ("Into Step.");
 		Debug.Log ("index: " + index + " list count: " + dialogue.Speech.Count + "  Line:");
@@ -42,12 +61,42 @@ public class DialogueExecuter {
 		}
 
 		if (index == (dialogue.Speech.Count)) {
-			gameState = dialogue.StateOfGameAfterDialogue;
+
+			if (dialogue.StateOfGameAfterDialogue != GameState.NoChange) {
+				gameState = dialogue.StateOfGameAfterDialogue;
+			}
 			textPanel.SetActive (false);
+			if (slapQuality != "NoSlap") {
+				
+				Animator npcanim = NPC.GetComponent<Animator> ();
+				npcanim.SetTrigger ("Slap");
+
+				//StoryManager.instance.StartChileCoroutine (hitter ());
+
+				Animator npcanimator = NPCObj.GetComponent<Animator> ();
+				npcanimator.SetTrigger (slapQuality);
+
+				//StartCoroutine (hitter ());
+
+				PoliceAppear.FinalHardSlap = true;
+
+			}
 		}
 
 		index++;
 			
 		return gameState;
 	}
+
+	IEnumerable hitter(){
+		yield return new WaitForSeconds (2);
+		Animator npcanimator = NPCObj.GetComponent<Animator> ();
+		npcanimator.SetTrigger (slapQuality);
+	}
+
+	public void SetSlap(string inSlap)
+	{
+		slapQuality = inSlap;
+	}
+
 }
