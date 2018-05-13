@@ -71,6 +71,10 @@ public class DialogueExecuter {
 				Animator npcanim = NPC.GetComponent<Animator> ();
 				npcanim.SetTrigger ("Slap");
 
+                AudioSource playerSource = NPC.GetComponent<AudioSource>();
+                playerSource.Play();
+
+
                 if(StoryManager.AbsoluteGameState == GameState.HeadingToSecondWoman || StoryManager.AbsoluteGameState == GameState.HeadingToProstitute)
                 {
                     npcanim.SetBool("LastSlap", true);

@@ -38,7 +38,7 @@ public class PoliceAppear : MonoBehaviour {
 
         yield return new WaitForSeconds(2.3f);
         SceneManager.LoadScene(2);
-
+         
         
     }
 }
