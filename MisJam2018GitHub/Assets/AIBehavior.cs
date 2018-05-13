@@ -45,7 +45,7 @@ public class AIBehavior : MonoBehaviour {
     void OnTriggerStay(Collider AITrigger)
     {
         GameObject AIChar = AITrigger.gameObject;
-        if (Input.GetKeyDown(KeyCode.X) && dialogueCurrent)
+        if (Input.GetKeyDown(KeyCode.E) && dialogueCurrent)
         {
             Debug.Log("TriggeredX");
             dialogueCurrent = false;
