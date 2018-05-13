@@ -15,7 +15,7 @@ public class StoryManager : MonoBehaviour {
 
 	public GameObject TextPanel;
 	public Text Dialoguetextbox;
-	public GameState AbsoluteGameState;
+	public static GameState AbsoluteGameState;
 
 	bool DialogueMode;
 	DialogueExecuter dialogueExecuter;
