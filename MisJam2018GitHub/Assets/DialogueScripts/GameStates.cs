@@ -22,6 +22,12 @@
         PoliceStation,
         FinalDate,
 		NoChange,
+		/*PreNode,
+		Node1,
+		Node2,
+		Node3,*/
+		YouDied,
+		YouWon
 
 
 }

@@ -18,6 +18,8 @@ public class StoryManager : MonoBehaviour {
 	public static GameState AbsoluteGameState;
 
 	public GameObject PCobj;
+	public Text HandCounterText;
+	public static int HandCount;
 
 	/*
 	public AIBehavior FredBehav;
@@ -165,6 +167,7 @@ public class StoryManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		HandCounterText.text =  HandCount.ToString();
 		/*if (AbsoluteGameState == GameState.KnockedOut) {
 			PoliceAppear.FinalHardSlap = true;
 		}*/
@@ -217,6 +220,10 @@ public class StoryManager : MonoBehaviour {
 
 		}
 		*/
+
+		if ((Input.GetKeyUp (KeyCode.Escape))) {
+			Application.Quit ();
+		}
 
 		
 	}
