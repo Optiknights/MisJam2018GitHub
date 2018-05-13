@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speech:
   - 'Please take your currency. Remaining Balance: 1.42$'
-  StateOfGameAfterDialogue: 14
+  StateOfGameAfterDialogue: 17

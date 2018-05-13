@@ -32,7 +32,12 @@ public class AIBehavior : MonoBehaviour {
     }
 
     public void AISlap()
-    {
+	{
+		Debug.Log ("Trying to start slap animation.");
+		if (this.gameObject == null){
+			
+			Debug.Log ("Game Object null :( ");
+		}
         Animator aiAnim = this.gameObject.GetComponent<Animator>();
         if (isSlapping)
         {
@@ -45,7 +50,7 @@ public class AIBehavior : MonoBehaviour {
     void OnTriggerStay(Collider AITrigger)
     {
         GameObject AIChar = AITrigger.gameObject;
-        if (Input.GetKeyDown(KeyCode.X) && dialogueCurrent)
+		if (Input.GetKeyDown(KeyCode.E) && dialogueCurrent)
         {
             Debug.Log("TriggeredX");
             dialogueCurrent = false;
