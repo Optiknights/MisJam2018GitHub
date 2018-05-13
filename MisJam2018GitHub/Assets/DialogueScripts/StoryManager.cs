@@ -218,6 +218,10 @@ public class StoryManager : MonoBehaviour {
 		}
 		*/
 
+		if ((Input.GetKeyUp (KeyCode.Escape))) {
+			Application.Quit ();
+		}
+
 		
 	}
 
