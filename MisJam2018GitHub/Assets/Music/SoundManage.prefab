@@ -215,12 +215,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSong: {fileID: 8300000, guid: b23dc463d05ca8c4f9a7015ac9f5e834, type: 3}
   _Music:
-  - {fileID: 8300000, guid: 36eb3d03a3c0d1d43b255e2ef77659a2, type: 3}
+  - {fileID: 8300000, guid: b23dc463d05ca8c4f9a7015ac9f5e834, type: 3}
   - {fileID: 8300000, guid: 8ea003c40ea7c104f81bf44cd7f65705, type: 3}
   - {fileID: 8300000, guid: 26aa67e9354288c43ac42736e76bf956, type: 3}
+  - {fileID: 8300000, guid: 36eb3d03a3c0d1d43b255e2ef77659a2, type: 3}
   PlayList:
-  - {fileID: 8300000, guid: 36eb3d03a3c0d1d43b255e2ef77659a2, type: 3}
+  - {fileID: 8300000, guid: b23dc463d05ca8c4f9a7015ac9f5e834, type: 3}
   - {fileID: 8300000, guid: 8ea003c40ea7c104f81bf44cd7f65705, type: 3}
   - {fileID: 8300000, guid: 26aa67e9354288c43ac42736e76bf956, type: 3}
+  - {fileID: 8300000, guid: 36eb3d03a3c0d1d43b255e2ef77659a2, type: 3}
   gameMusic: {fileID: 82589546191482220}
   soundFX: {fileID: 82634428064513736}
