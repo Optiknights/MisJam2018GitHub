@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PoliceAppear : MonoBehaviour {
     public GameObject UITool;
@@ -16,6 +17,7 @@ public class PoliceAppear : MonoBehaviour {
 	void Update () {
 		if(FinalHardSlap)
         {
+            Debug.Log("FinalSlap trigger");
 			FinalHardSlap = false;
 			StoryManager.AbsoluteGameState = GameState.PoliceStation;
             StartCoroutine(FinalSlapAnimation());
@@ -34,6 +36,9 @@ public class PoliceAppear : MonoBehaviour {
         yield return new WaitForSeconds(2);
         UITool.SetActive(false);
 
+        yield return new WaitForSeconds(2.3f);
+        SceneManager.LoadScene(2);
+         
         
     }
 }

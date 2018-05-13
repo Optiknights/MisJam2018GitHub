@@ -71,14 +71,28 @@ public class DialogueExecuter {
 				Animator npcanim = NPC.GetComponent<Animator> ();
 				npcanim.SetTrigger ("Slap");
 
+                AudioSource playerSource = NPC.GetComponent<AudioSource>();
+                playerSource.Play();
+
+
+                if(StoryManager.AbsoluteGameState == GameState.HeadingToSecondWoman || StoryManager.AbsoluteGameState == GameState.HeadingToProstitute)
+                {
+                    npcanim.SetBool("LastSlap", true);
+                }
+
 				//StoryManager.instance.StartChileCoroutine (hitter ());
 
 				Animator npcanimator = NPCObj.GetComponent<Animator> ();
 				npcanimator.SetTrigger (slapQuality);
 
+                Debug.Log(StoryManager.AbsoluteGameState);
 				//StartCoroutine (hitter ());
-
-				PoliceAppear.FinalHardSlap = true;
+                if(StoryManager.AbsoluteGameState == GameState.TalkingToProstituteWithCash)
+                {
+                    Debug.Log("settoTrue");
+                    PoliceAppear.FinalHardSlap = true;
+                }
+				
 
 			}
 		}
