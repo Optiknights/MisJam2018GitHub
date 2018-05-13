@@ -7,9 +7,7 @@ public class SoundManage : MonoBehaviour
 {
     public static SoundManage instance = null;
 
-    public AudioClip startSong;
     public AudioClip gameSong;
-    public AudioClip endSong;
     public List<AudioClip> _Music;
     public List<AudioClip> PlayList;
     private int MyPlayListIterator;
@@ -51,7 +49,6 @@ public class SoundManage : MonoBehaviour
         {
             //gameMusic.Stop();
             // gameMusic.PlayOneShot(startSong);
-
         }
         else if (scene.name == "Game")
         {
