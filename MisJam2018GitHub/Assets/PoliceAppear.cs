@@ -14,8 +14,16 @@ public class PoliceAppear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //trigger based on final slap
+        /*
+        if (Input.anyKey)
+        {
+            FinalHardSlap = true;
+        }
+        */
 		if(FinalHardSlap)
         {
+            FinalHardSlap = false;
             StartCoroutine(FinalSlapAnimation());
         }
 	}
@@ -28,7 +36,7 @@ public class PoliceAppear : MonoBehaviour {
         Instantiate(PoliceOfficer, new Vector3(58.46f, 0.09f, 15.73f), Quaternion.identity);
         Instantiate(PoliceOfficer, new Vector3(56.81f, 0.09f, 13.33f), Quaternion.identity);
         Instantiate(PoliceOfficer, new Vector3(56.65f, 0.09f, 14.94f), Quaternion.identity);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         UITool.SetActive(false);
         
     }
