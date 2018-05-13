@@ -16,10 +16,11 @@ public class DialogueExecuter {
 	GameState gameState;
 	GameObject textPanel;
 	GameObject NPCObj;
+	GameObject NPC;
 
 	string slapQuality;
 
-	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState, GameObject NPCobject)
+	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState, GameObject NPCobject, GameObject inNPC)
 	{
 		Debug.Log ("Spinning up DialogueExecuter.");
 		textPanel = inTextPanel;
@@ -30,6 +31,7 @@ public class DialogueExecuter {
 		index = 0;
 		gameState = inGameState;
 		NPCObj = NPCobject;
+		NPC = inNPC;
 		slapQuality = "NoSlap";
 	}
 
@@ -38,7 +40,7 @@ public class DialogueExecuter {
         Debug.Log("Spinning up DialogueExecuter.");
         textPanel = inTextPanel;
         textPanel.SetActive(true);
-        dialogueTextBox.text = "Testing";
+        dialogueTextBox.text = "*Looking around*";
         dialogueTextUI = dialogueTextBox;
         dialogue = inDialogue;
         index = 0;
@@ -65,14 +67,31 @@ public class DialogueExecuter {
 			}
 			textPanel.SetActive (false);
 			if (slapQuality != "NoSlap") {
+				
+				Animator npcanim = NPC.GetComponent<Animator> ();
+				npcanim.SetTrigger ("Slap");
+
+				//StoryManager.instance.StartChileCoroutine (hitter ());
+
 				Animator npcanimator = NPCObj.GetComponent<Animator> ();
 				npcanimator.SetTrigger (slapQuality);
+
+				//StartCoroutine (hitter ());
+
+				PoliceAppear.FinalHardSlap = true;
+
 			}
 		}
 
 		index++;
 			
 		return gameState;
+	}
+
+	IEnumerable hitter(){
+		yield return new WaitForSeconds (2);
+		Animator npcanimator = NPCObj.GetComponent<Animator> ();
+		npcanimator.SetTrigger (slapQuality);
 	}
 
 	public void SetSlap(string inSlap)

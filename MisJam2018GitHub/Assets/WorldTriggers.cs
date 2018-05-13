@@ -21,10 +21,10 @@ public class WorldTriggers : MonoBehaviour {
     void OnTriggerStay(Collider WorldTrigger)
     {
         GameObject AIChar = WorldTrigger.gameObject;
-        if (Input.GetKeyDown(KeyCode.X) && dialogueCurrent && worldTriggerID == 1)
+		if (Input.GetKeyDown(KeyCode.Q) && dialogueCurrent)
         {
             StartCoroutine(WaitForDialogue());
-            //storyManager.WorldEvent(worldTriggerID);
+            storyManager.WorldEvent(worldTriggerID);
         }
     }
 

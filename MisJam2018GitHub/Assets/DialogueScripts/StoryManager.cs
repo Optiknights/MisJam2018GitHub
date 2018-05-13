@@ -17,6 +17,20 @@ public class StoryManager : MonoBehaviour {
 	public Text Dialoguetextbox;
 	public static GameState AbsoluteGameState;
 
+	public GameObject PCobj;
+
+	/*
+	public AIBehavior FredBehav;
+	public AIBehavior LisaBehav;
+	public AIBehavior TinaBehav;
+	public AIBehavior ChrystalBehav;
+	*/
+
+	public GameObject Fred;
+	public GameObject Lisa;
+	public GameObject Tina;
+	public GameObject Chrystal;
+
 	bool DialogueMode;
 	DialogueExecuter dialogueExecuter;
 
@@ -37,31 +51,34 @@ public class StoryManager : MonoBehaviour {
 	void Start () {
 
 		AbsoluteGameState = GameState.HeadingToFred;
+		//AbsoluteGameState = GameState.ObtainedCash;
 	}
 
 
 	//To be accessed by game for trigger
     public void WorldEvent(int worldTriggerID)
     {
+		Debug.Log ("Triggered WorldEvent");
         Dialogue foundDialogue = FuckOff;
+
         switch (worldTriggerID)
         {
             case 1:
-                if (AbsoluteGameState == GameState.HeadingToBuyPizza)
+			if (AbsoluteGameState == GameState.HeadingToBuyPizza || AbsoluteGameState == GameState.ObtainedPizza)
                 {
                     AbsoluteGameState = GameState.ObtainedPizza;
                     foundDialogue = PizzaShop;
                 }
                 break;
             case 2:
-                if (AbsoluteGameState == GameState.HeadingToGetChinese)
+			if (AbsoluteGameState == GameState.HeadingToGetChinese || AbsoluteGameState == GameState.ObtainedChinese)
                 {
                     AbsoluteGameState = GameState.ObtainedChinese;
                     foundDialogue = ChineseShop;
                 }
                 break;
             case 3:
-                if (AbsoluteGameState == GameState.HeadingToATM)
+			if (AbsoluteGameState == GameState.HeadingToATM || AbsoluteGameState == GameState.ObtainedCash)
                 {
                     AbsoluteGameState = GameState.ObtainedCash;
                     foundDialogue = ATM;
@@ -72,8 +89,10 @@ public class StoryManager : MonoBehaviour {
                 break;
         }
 
-        dialogueExecuter = new DialogueExecuter(TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState);
-        AbsoluteGameState = dialogueExecuter.Step();
+		Debug.Log ("Which dialogue using? "  + foundDialogue.name);
+
+		dialogueExecuter = new DialogueExecuter(TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState);
+        //AbsoluteGameState = dialogueExecuter.Step();
         
     }
 
@@ -82,9 +101,12 @@ public class StoryManager : MonoBehaviour {
     public void StartTalk(int charID, GameObject NPCObj)
 	{
 		Dialogue foundDialogue = FuckOff; //Default option if nothing else matches.
+		GameObject NPC = Lisa;
+		Debug.Log ("Triggered StartTalk.");
 
 		switch (charID) {
 		case 1:
+			NPC = Fred;
 			if (AbsoluteGameState == GameState.HeadingToFred) {
 				AbsoluteGameState = GameState.TalkingToFred;
 				foundDialogue = OpeningDialogue;
@@ -92,6 +114,7 @@ public class StoryManager : MonoBehaviour {
 			break;
 
 		case 2:
+			NPC = Lisa;
 			if (AbsoluteGameState == GameState.HeadingToFirstWoman) {
 				AbsoluteGameState = GameState.TalkingToFirstWoman;
 				foundDialogue = FirstWomanDialogue;
@@ -103,6 +126,7 @@ public class StoryManager : MonoBehaviour {
 			break;
 
 		case 3:
+			NPC = Tina;
 			if (AbsoluteGameState == GameState.HeadingToSecondWoman) {
 				AbsoluteGameState = GameState.TalkingToSecondWoman;
 				foundDialogue = SecondWomanDialogue;
@@ -114,6 +138,7 @@ public class StoryManager : MonoBehaviour {
 			break;
 
 		case 4:
+			NPC = Chrystal;
 			if (AbsoluteGameState == GameState.HeadingToProstitute) {
 				AbsoluteGameState = GameState.TalkingToProstitute;
 				foundDialogue = ProstituteDialogue;
@@ -129,7 +154,9 @@ public class StoryManager : MonoBehaviour {
 			break;
 		}
 
-		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState);
+		Debug.Log ("Which dialogue using? "  + foundDialogue.name);
+
+		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState, PCobj, NPC);
 
 		AbsoluteGameState = dialogueExecuter.Step ();
 
@@ -138,6 +165,9 @@ public class StoryManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		/*if (AbsoluteGameState == GameState.KnockedOut) {
+			PoliceAppear.FinalHardSlap = true;
+		}*/
 
 		if (Input.GetKeyUp (KeyCode.Alpha1) || Input.GetKeyUp (KeyCode.Keypad1)) {
 			CheckSlapList (1);
@@ -156,6 +186,7 @@ public class StoryManager : MonoBehaviour {
 			AbsoluteGameState = dialogueExecuter.Step ();
 			Debug.Log (AbsoluteGameState);
 		}
+			
 
 		// Currently using input key 'c' to advance dialogue. May change it to a different key, and add 1,2,3 for inputs later.
 
@@ -188,6 +219,11 @@ public class StoryManager : MonoBehaviour {
 		*/
 
 		
+	}
+
+	public void StartChildCoroutine(IEnumerator coroutineMethod)
+	{
+		StartCoroutine(coroutineMethod);
 	}
 
 	void SetSoftSlap()
