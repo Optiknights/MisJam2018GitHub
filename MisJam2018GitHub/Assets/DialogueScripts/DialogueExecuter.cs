@@ -15,8 +15,9 @@ public class DialogueExecuter {
 	int index;
 	GameState gameState;
 	GameObject textPanel;
+	GameObject NPCObj;
 
-	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState)
+	public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState, GameObject NPCobject)
 	{
 		Debug.Log ("Spinning up DialogueExecuter.");
 		textPanel = inTextPanel;
@@ -26,6 +27,7 @@ public class DialogueExecuter {
 		dialogue = inDialogue;
 		index = 0;
 		gameState = inGameState;
+		NPCObj = NPCobject;
 		Step ();
 	}
 
@@ -44,6 +46,8 @@ public class DialogueExecuter {
 		if (index == (dialogue.Speech.Count)) {
 			gameState = dialogue.StateOfGameAfterDialogue;
 			textPanel.SetActive (false);
+			Animator npcanimator = NPCObj.GetComponent<Animator> ();
+			npcanimator.SetTrigger ("HardSlap");
 		}
 
 		index++;
