@@ -78,14 +78,14 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 		// Test for collision with the environment based on current camera position.
 		Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
 		Vector3 noCollisionOffset = targetCamOffset;
-		for(float zOffset = targetCamOffset.z; zOffset <= 0; zOffset += 0.5f)
-		{
-			noCollisionOffset.z = zOffset;
-			if (DoubleViewingPosCheck (baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0) 
-			{
-				break;
-			} 
-		}
+		//for(float zOffset = targetCamOffset.z; zOffset <= 0; zOffset += 0.5f)
+		//{
+		//	noCollisionOffset.z = zOffset;
+		//	if (DoubleViewingPosCheck (baseTempPosition + aimRotation * noCollisionOffset, Mathf.Abs(zOffset)) || zOffset == 0) 
+		//	{
+		//		break;
+		//	} 
+		//}
 
 		// Repostition the camera.
 		smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
