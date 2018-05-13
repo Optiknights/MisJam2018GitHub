@@ -16,8 +16,8 @@ public class SoundControl : MonoBehaviour
     void Start()
     {
         musicManage = GameObject.FindObjectOfType<SoundManage>();
-        volumeControl.value = PlayerPrefsManage.GetMasterVolume();
-        SoundFXCOntrol.value = PlayerPrefsManage.GetSoundFXVolume();
+        volumeControl.value = 1;
+        SoundFXCOntrol.value = 1;
     }
 
     // Update is called once per frame
