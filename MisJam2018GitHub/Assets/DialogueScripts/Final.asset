@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speech:
   - "Fred: I can\u2019t believe you got into jail for -  "
-  - 'Will: 1) Soliciting an undercover cop? Yeah :( \n  2) Loitering? Yeah \n 3) Eating
-    pizza with pineapple on it? Yeah'
+  - 'Will: 1) Soliciting an undercover cop? Yeah :( \n  2) Eating pizza with pineapple
+    on it? Yeah'
   - 'Gina: Gross.'
   - 'Fred: Will, this is my friend Gina.'
   - 'Will: 1) Hey cutie. \n 2) Hi, nice to meet you. \n 3) Wish we had met under better

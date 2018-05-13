@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ChineseStore
   m_EditorClassIdentifier: 
   Speech:
-  - Here is Tinas Order!
+  - Here is Tina's Order!
   StateOfGameAfterDialogue: 11

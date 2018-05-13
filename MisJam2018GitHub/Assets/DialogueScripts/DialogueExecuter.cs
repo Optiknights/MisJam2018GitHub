@@ -85,6 +85,8 @@ public class DialogueExecuter {
 				Animator npcanimator = NPCObj.GetComponent<Animator> ();
 				npcanimator.SetTrigger (slapQuality);
 
+				StoryManager.HandCount++;
+
                 Debug.Log(StoryManager.AbsoluteGameState);
 				//StartCoroutine (hitter ());
                 if(StoryManager.AbsoluteGameState == GameState.TalkingToProstituteWithCash)
