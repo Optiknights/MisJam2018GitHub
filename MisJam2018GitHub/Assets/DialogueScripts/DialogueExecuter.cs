@@ -33,7 +33,20 @@ public class DialogueExecuter {
 		slapQuality = "NoSlap";
 	}
 
-	public GameState Step()
+    public DialogueExecuter(GameObject inTextPanel, Text dialogueTextBox, Dialogue inDialogue, GameState inGameState)
+    {
+        Debug.Log("Spinning up DialogueExecuter.");
+        textPanel = inTextPanel;
+        textPanel.SetActive(true);
+        dialogueTextBox.text = "Testing";
+        dialogueTextUI = dialogueTextBox;
+        dialogue = inDialogue;
+        index = 0;
+        gameState = inGameState;
+        slapQuality = "NoSlap";
+    }
+
+    public GameState Step()
 	{
 		Debug.Log ("Into Step.");
 		Debug.Log ("index: " + index + " list count: " + dialogue.Speech.Count + "  Line:");

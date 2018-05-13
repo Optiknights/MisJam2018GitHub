@@ -28,6 +28,9 @@ public class StoryManager : MonoBehaviour {
 	public Dialogue ProstituteDialogue;
 	public Dialogue ProstituteDialogue2;
 	public Dialogue FuckOff;
+    public Dialogue PizzaShop;
+    public Dialogue ChineseShop;
+    public Dialogue ATM;
 
 
 	// Use this for initialization
@@ -40,7 +43,38 @@ public class StoryManager : MonoBehaviour {
 	//To be accessed by game for trigger
     public void WorldEvent(int worldTriggerID)
     {
+        Dialogue foundDialogue = FuckOff;
+        switch (worldTriggerID)
+        {
+            case 1:
+                if (AbsoluteGameState == GameState.HeadingToBuyPizza)
+                {
+                    AbsoluteGameState = GameState.ObtainedPizza;
+                    foundDialogue = PizzaShop;
+                }
+                break;
+            case 2:
+                if (AbsoluteGameState == GameState.HeadingToGetChinese)
+                {
+                    AbsoluteGameState = GameState.ObtainedChinese;
+                    foundDialogue = ChineseShop;
+                }
+                break;
+            case 3:
+                if (AbsoluteGameState == GameState.HeadingToATM)
+                {
+                    AbsoluteGameState = GameState.ObtainedCash;
+                    foundDialogue = ATM;
+                }
+                break;
+            default:
+                foundDialogue = FuckOff;
+                break;
+        }
 
+        dialogueExecuter = new DialogueExecuter(TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState);
+        AbsoluteGameState = dialogueExecuter.Step();
+        
     }
 
 
@@ -95,7 +129,7 @@ public class StoryManager : MonoBehaviour {
 			break;
 		}
 
-		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState, NPCObj);
+		dialogueExecuter = new DialogueExecuter (TextPanel, Dialoguetextbox, foundDialogue, AbsoluteGameState);
 
 		AbsoluteGameState = dialogueExecuter.Step ();
 
